@@ -1,4 +1,5 @@
 selenium
+schedule
 bs4
 psycopg2
 sqlalchemy

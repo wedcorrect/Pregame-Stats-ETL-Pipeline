@@ -95,7 +95,7 @@ def match_stat_extraction(league_list, today, tomorrow):
             else:
                 print(league_url)
 
-                service = Service(executable_path=rel_exe_path)
+                service = Service(executable_path=exe_path)
                 #service = Service(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
                 options = Options()
                 ua = UserAgent()
@@ -154,7 +154,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                 #print(df.Date)
 
                 def matches_get(url):
-                    service = Service(executable_path=rel_exe_path)
+                    service = Service(executable_path=exe_path)
                     #service = Service(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
                     options = Options()
                     ua = UserAgent()
@@ -184,7 +184,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                     driver.quit()
 
                     def ind_team_stats(url):
-                        service = Service(executable_path=rel_exe_path)
+                        service = Service(executable_path=exe_path)
                         #service = Service(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
                         options = Options()
                         ua = UserAgent()

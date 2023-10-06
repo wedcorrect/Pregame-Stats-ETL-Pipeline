@@ -39,10 +39,11 @@ def main():
 
 
 if __name__ == '__main__':
+    main()
     # Schedule the task to run daily at a specific time (e.g., 10:30 AM)
-    schedule.every().day.at("01:00").do(main)
+    # schedule.every().day.at("01:00").do(main)
 
-    while True:
-        # Run the pending scheduled tasks
-        schedule.run_pending()
-        time.sleep(60)  # Sleep for 1 second (adjust as needed)
+    # while True:
+    #     # Run the pending scheduled tasks
+    #     schedule.run_pending()
+    #     time.sleep(60)  # Sleep for 1 second (adjust as needed)

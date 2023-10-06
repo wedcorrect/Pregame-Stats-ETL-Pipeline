@@ -41,6 +41,6 @@ testleagues_list = {
 }
 
 
-exe_path = r'C:/Users/hp/Documents/Our Documents/Personal Development/Projects/Client Projects/Dexter Hadeveld (Upwork)/Pre-Game-Stats-ETL-Sport-Insight/app/chromedriver-win64/chromedriver.exe'
+exe_path = r'C:/Users/hp/Documents/Our Documents/Personal Development/Projects/Client Projects\Dexter Hadeveld (Upwork)/Deployment/Pregame-Stats-ETL-Pipeline/app/chromedriver-win64/chromedriver.exe'
 
 rel_exe_path = r'C:/Users/Administrator/Documents/Pre-Game-Stats-ETL-Sport-Insight/app/chromedriver-win64/chromedriver.exe'
