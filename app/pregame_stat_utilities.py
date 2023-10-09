@@ -106,7 +106,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                 options.add_argument("--headless")
                 options.add_argument("--no-sandbox")
                 options.add_argument("--disable-gpu")
-                options.add_argument("--incognito")
+                #options.add_argument("--incognito")
                 options.add_argument("--window-size=1920,1080")
                 options.add_argument("--disable-dev-shm-usage")
 
@@ -122,7 +122,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                 match = [con.get_attribute('innerText') for con in matches]
                 time.sleep(2)
                 #print(match)
-                #print('Level 1: League level')
+                print('Level 1: League level')
                 match_links =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR clkedU']/div/a[@href]")
                 match_link = [con.get_attribute('href') for con in match_links] 
                 #print(match_link)
@@ -155,6 +155,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                 #print(df.Date)
 
                 def matches_get(url):
+                    #print(url)
                     service = Service(executable_path=exe_path)
                     #service = Service(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
                     options = Options()
@@ -166,7 +167,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                     options.add_argument("--headless")
                     options.add_argument("--disable-gpu")
                     options.add_argument("--no-sandbox")
-                    options.add_argument("--incognito")
+                    #options.add_argument("--incognito")
                     options.add_argument("--disable-dev-shm-usage")
                     options.add_argument("--window-size=1920,1080")
 
@@ -175,11 +176,13 @@ def match_stat_extraction(league_list, today, tomorrow):
                     driver.get(url)
                     WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, "//div[@class='sc-jlZhew kgghii']/div/div")))
                     driver.execute_script("window.stop();")
-                    team_links =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR gWLOaC']/div/a[@href]")
+                    #team_links =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR gWLOaC']/div/a[@href]")
+                    team_links =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR kFOeqr']/div/a[@href]")
                     team_link = [con.get_attribute('href') for con in team_links]
                     #print(team_link)
-                    #print('Level 2: Match level')
-                    team_titles = driver.find_elements(By.CLASS_NAME,"sc-fqkvVR.gWLOaC")
+                    print('Level 2: Match level')
+                    #team_titles = driver.find_elements(By.CLASS_NAME,"sc-fqkvVR.gWLOaC")
+                    team_titles = driver.find_elements(By.CLASS_NAME,"sc-fqkvVR.kFOeqr")
                     team_title = [con.get_attribute('innerText') for con in team_titles]
                     #print(team_title)
 
@@ -197,7 +200,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                         options.add_argument("--headless")
                         options.add_argument("--no-sandbox")
                         options.add_argument("--disable-gpu")
-                        options.add_argument("--incognito")
+                        #options.add_argument("--incognito")
                         options.add_argument("--disable-dev-shm-usage")
                         options.add_argument("--window-size=1920,1080")
 
@@ -219,7 +222,7 @@ def match_stat_extraction(league_list, today, tomorrow):
                         df_team_age.rename(columns = {0:'Total Players', 2:'Average player age',
                                                     4:'Foreign players'}, inplace = True)
 
-                        #print('Level 3: Individual matches level')
+                        print('Level 3: Individual matches level')
                         team_summarys =driver.find_elements(By.CLASS_NAME,"sc-fqkvVR.Ksgce")
                         team_summary = [con.get_attribute('innerText') for con in team_summarys]
                         driver.quit()
@@ -276,7 +279,8 @@ def match_stat_extraction(league_list, today, tomorrow):
                 move_to_database = pd.concat([df_2.reset_index(drop=True), combined], axis=1, ignore_index=False)
                 # Drop duplicate columns
                 move_to_database = move_to_database.loc[:, ~move_to_database.columns.duplicated(keep='first')]
-
+                #break
+                
                 #Loads the extracted league to the database
                 for i in range(2): #Tries twice to load data in case of any unforeseen connection issue
                     try:

@@ -14,7 +14,7 @@ def main():
     today = date.today()
     tomorrow = date.today() + timedelta(days=1)
     print(yesterday, today, tomorrow)
-    if (today.day % 2) == 0:
+    if (today.day % 2) == 1:
         match_stat_extraction(leagues_list, today, yesterday)
 
         #Concatenating error logs to send to email.
