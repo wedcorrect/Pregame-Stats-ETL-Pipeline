@@ -32,7 +32,7 @@ def stats_loader(dataframe):
     # Create a SQLAlchemy engine
     engine = create_engine(f'postgresql+psycopg2://{settings.database_user}:{settings.database_password}@{settings.database_hostname}/{settings.database_name}')
 
-    dataframe.to_sql('pre-game_stats', engine, if_exists='append', index=False)
+    dataframe.to_sql('pre_game_stats', engine, if_exists='append', index=False)
 
     connection.commit()
     connection.close()
@@ -53,7 +53,7 @@ def stats_reader():
     connection = psycopg2.connect(**connection_params)
     cursor = connection.cursor()
 
-    query = f"SELECT * FROM pre-game_stats"
+    query = f"SELECT * FROM pre_game_stats"
     cursor.execute(query)
 
     result = cursor.fetchall()
