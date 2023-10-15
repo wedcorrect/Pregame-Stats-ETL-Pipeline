@@ -126,21 +126,23 @@ def match_stat_extraction(league_list, today, tomorrow):
                 match_links =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR clkedU']/div/a[@href]")
                 match_link = [con.get_attribute('href') for con in match_links] 
                 #print(match_link)
-                #time.sleep(2)
-                # elements = driver.find_elements(By.CLASS_NAME, 'sc-aXZVg.dIaSSb')
-                # print(len(elements))
+                # time.sleep(1)
+                # elements = driver.find_elements(By.CLASS_NAME, 'sc-aXZVg.dbpbvb')
+                # #elements = driver.find_elements(By.CLASS_NAME, 'sc-fqkvVR.byYarT')
+                # print(len(elements), type(elements))
                 # elements[1].click()
                 # matches2 =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR clkedU']/div/a")
                 # match2 = [con.get_attribute('innerText') for con in matches2]
+                # time.sleep(1)
                 # print('Level 1: League level next page')
                 # match_links2 =driver.find_elements(By.XPATH,"//div[@class='sc-fqkvVR clkedU']/div/a[@href]")
                 # match_link2 = [con.get_attribute('href') for con in match_links2]
-                driver.quit()
+                # driver.quit()
                 # #print(match2)
                 # match = match + match2
                 # match_link = match_link + match_link2
-                match  = [item.replace('\n', ',').split(',') for item in match]
-                #print(match)
+                # match  = [item.replace('\n', ',').split(',') for item in match]
+                # print(match)
                 data = [sublist[:4] for sublist in match]
                 df = pd.DataFrame(data, columns=['Date', 'Time', 'Home_Team', 'Away_Team'])
                 df['match_links'] = match_link
